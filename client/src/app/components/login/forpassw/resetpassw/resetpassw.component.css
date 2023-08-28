@@ -1,0 +1,17 @@
+body{ background-image: url('../../../../../assets/images/background-login.svg'); background-size: cover; background-repeat: no-repeat; }
+section{ display: flex; align-items: center; justify-content: center; height: 84.9vh; margin-bottom: -3rem; }
+.main_es{ padding: 5%; margin-bottom: 4rem; height: 71.7vh; }
+h2 { margin-top: -2rem; margin-bottom: 2rem; }
+i {position: relative; margin-left: 79%; top: -1.5rem;}
+label{display: flex; flex-direction: column; }
+.input-group{ position: relative; right: 35%; float: right; width: 30%; background-color: rgb(253, 253, 253); padding: 3rem; border-radius: .5rem; box-shadow: 0rem 0rem .5rem .1rem rgb(0, 0, 0);}
+.inputs > input{ border-bottom: 2px solid rgb(3, 3, 3); color: rgb(0, 0, 0);}
+.wth100{ width: 100%; }
+.alert { margin-bottom: -4.5%; }
+.btn[disabled]{ border-color: rgb(212, 212, 212); background-color: rgb(201, 201, 201);}
+.btn[disabled]:hover{ border-color: rgb(255, 0, 0); color: rgb(0, 0, 0); background-color: rgb(255, 18, 18); box-shadow: 0rem 0rem 1rem .1rem rgb(255, 0, 0);}
+@media (max-width: 958px) {
+  .btn-group > button{ position: relative; left: 5%; bottom: 0.5rem; width: auto;}
+  .wth50{ width: 50%; }
+  .input-group{ flex-direction: column; }
+}

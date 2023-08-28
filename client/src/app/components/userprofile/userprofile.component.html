@@ -1,0 +1,28 @@
+<app-nabvar></app-nabvar>
+<div class="main_es">
+  <h1>Perfil Usuario</h1>
+  <div class="btn-group">
+    <button [routerLink]="['/createuserprofile']"><i class="fa-solid fa-plus"></i> Nuevo Perfil</button>
+  </div>
+  <div class="datos">
+    <table datatable [dtOptions]="dtOptions" *ngIf="listProfile.length > 0" id="tabla">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let profile of listProfile">
+            <td>{{profile.name}}</td>
+            <td>
+              <i [routerLink]="['/updateuserprofile', profile.idProfile]" class="fa-solid fa-pen-to-square success"></i>
+              <i (click)="deleteProfile(profile.idProfile)" class="fa-solid fa-trash danger"></i>
+            </td>
+        </tr>
+      </tbody>
+    </table>
+    <h5 *ngIf="listProfile.length== 0">No hay perfiles registrados</h5>
+  </div>
+</div>
+<app-footer></app-footer>

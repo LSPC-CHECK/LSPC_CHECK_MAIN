@@ -1,0 +1,36 @@
+<app-nabvar></app-nabvar>
+<div class="main_es">
+  <h1>Usuarios Registrados</h1>
+  <div class="btn-group">
+    <button [routerLink]="['/users-add']"><i class="fa-solid fa-plus"></i> Nuevo registro</button>
+  </div>
+  <div class="datos">
+    <table datatable [dtOptions]="dtOptions" *ngIf="listUsers.length > 0" id="tabla">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Email</th>
+          <th>Card ID</th>
+          <th>Perfil</th>
+          <th>Estado</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of listUsers">
+          <td>{{ user.name }}</td>
+          <td>{{ user.lastname }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.cardId }}</td>
+          <td><span [ngClass]="{'admon':user.tbl_profile.name === rols[0], 'direct':user.tbl_profile.name === rols[1], 'aux':user.tbl_profile.name === rols[2], 'extUser':user.tbl_profile.name === rols[3]}" >{{ user.tbl_profile.name }}</span></td>
+          <td><span  [ngClass]="{'activo':user.state == 'Activo','inactivo':user.state == 'Inactivo'}">{{ user.state }}</span></td>
+          <td><i [routerLink]="['/users-update', user.idUser]" class="fa-solid fa-pen-to-square success"></i>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h5 *ngIf="listUsers.length == 0">There are no registered users</h5>
+  </div>
+</div>
+<app-footer></app-footer>

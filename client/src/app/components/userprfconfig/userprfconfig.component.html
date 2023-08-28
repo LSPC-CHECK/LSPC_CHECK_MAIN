@@ -1,0 +1,67 @@
+<app-nabvar></app-nabvar>
+<div class="main_es">
+  <!-- Formulario con la informacion -->
+  <form [formGroup]="userPForm">
+    <div class="qrCode">
+      <h2>Decarga tu QR</h2>
+      <qrcode (qrCodeURL)="onCodeChange($event)" [qrdata]="url" [width]="230" [errorCorrectionLevel]="'H'"></qrcode>
+      <a [href]="URL" download><i class="fa-solid fa-download"></i> Descargar QR</a>
+    </div>
+    <div class="profilePh">
+      <img class="imgProfile" [src]="imgURL">
+      <div class="selectfile">
+        <input type="file" class="inpArch" name="image" accept="image/*">
+      </div>
+    </div>
+    <div class="input-group">
+      <div class="inputs wth50">
+        <label>Primer Nombre</label>
+        <input type="text" name="name" placeholder="Ingresa tu primer nombre" formControlName="name">
+        <div class="alert" *ngIf="userPForm.get('name')?.hasError('required') && (userPForm.get('name')?.dirty || userPForm.get('name')?.touched)">El primer nombre es requerido</div>
+      </div>
+      <div class="inputs wth50">
+        <label>Segundo Nombre</label>
+        <input type="text" name="secName" placeholder="Ingresa tu segundo nombre" formControlName="secName">
+      </div>
+      <div class="inputs wth50">
+        <label>Primer Apellido</label>
+        <input type="text" name="lastName" placeholder="Ingresa tu primer apellido" formControlName="lastName">
+        <div class="alert" *ngIf="userPForm.get('lastName')?.hasError('required') && (userPForm.get('lastName')?.dirty || userPForm.get('lastName')?.touched)">El primer apellido es requerido</div>
+      </div>
+      <div class="inputs wth50">
+        <label>Segundo Apellido</label>
+        <input type="text" name="secSurname" placeholder="Ingresa tu segundo apellido" formControlName="secSurname">
+      </div>
+      <div class="inputs wth100">
+        <label>Correo Electrónico</label>
+        <input type="text" name="email" placeholder="Ingresa tu correo" formControlName="email">
+        <div class="alert" *ngIf="userPForm.get('email')?.hasError('required') && (userPForm.get('email')?.dirty || userPForm.get('email')?.touched)">El Correo es requerido</div>
+      </div>
+      <div class="inputs wth100">
+        <label>Documento de Identidad</label>
+        <input type="text" name="cardId" placeholder="Ingresa tu Documento" formControlName="cardId">
+        <div class="alert" *ngIf="userPForm.get('cardId')?.hasError('required') && (userPForm.get('cardId')?.dirty || userPForm.get('cardId')?.touched)">El Documento es requerido</div>
+      </div>
+    </div>
+    <div class="btn-group">
+      <button type="button" name="btn" id="btn" [disabled]="!userPForm.valid" (click)="confirm()"><i class="fa-regular fa-circle-up"></i>  Actualizar</button>
+    </div>
+  </form>
+  <!-- Formulario que valida la contraseña -->
+  <form [formGroup]="passForm" class="desapear" id="passform" (submit)="updateProfile()">
+    <div class="input-group">
+      <div class="inputs wth100">
+        <i class="fa-solid fa-xmark" title="cerrar" (click)="decline()"></i>
+        <label>Ingresa La contraseña</label>
+        <input [type]="show ? 'text':'password'" name="password" placeholder="Ingresa tu contraseña" formControlName="password">
+        <i class="fa-solid fa-eye" *ngIf="show" (click)="showPass()"></i>
+        <i class="fa-solid fa-eye-slash" *ngIf="!show" (click)="showPass()"></i>
+        <div class="alert top" *ngIf="passForm.get('password')?.hasError('required') && (passForm.get('password')?.dirty || passForm.get('password')?.touched)">La contraseña es necesaria</div>
+        <div class="btn-group">
+          <button type="submit" name="btn" id="btnPss" class="pass" id="pass" [disabled]="!passForm.valid"><i class="fa-solid fa-check"></i>Confirmar</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<app-footer></app-footer>

@@ -1,0 +1,22 @@
+<app-nabvar></app-nabvar>
+<body>
+  <div class="main">
+    <div class="cabecera">
+      <span>crear un nuevo perfil</span>
+    </div>
+    <div class="cuerpo">
+      <form *ngIf="!submitted" [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+        <div class="profileName">
+          <label for="name">Nuevo Nombre</label>
+          <input required type="text" id="name" name="nameProfile" formControlName="name" placeholder="Admin">
+          <div class="text-danger" *ngIf="profileForm.get('name')?.invalid && (profileForm.get('name')?.dirty || profileForm.get('name')?.touched)">Se requiere un nombre de perfil</div>
+        </div>
+        <div class="botones">
+          <button class="botonBonitoReturn" [routerLink]="['/userprofile']">Regresar</button>
+          <button class="botonBonitoSend" id="submitButton" [disabled]="!profileForm.valid">Enviar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+<app-footer></app-footer>

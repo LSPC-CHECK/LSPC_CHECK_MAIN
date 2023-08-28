@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap');
+header{position: sticky; top: 0; z-index: 1;}
+nav{ display: flex; font-family: 'Raleway', sans-serif; height: 10vh; width: 100%; background-color: #000; justify-content: space-between; transition: all .5s linear;}
+nav:hover{box-shadow: 0rem 0rem 1.5rem rgb(0, 0, 255);}
+nav > a{ display: flex; width: 30%; align-items: center;}
+nav > a img{ width: 75%;}
+nav > ul{ display: flex; justify-content: space-around; align-items: center; width: 65rem;}
+nav > ul li{ list-style: none; font-weight: 600;}
+nav > ul li a{text-decoration: none; padding: .5rem; font-weight: 600; color: #fff; border-radius: .5rem; cursor: pointer;}
+nav ul a:hover{ box-shadow: 2px 2px 20px 3px #fff; transition: ease-in 0.4s;}
+.submenu{ display: none; flex-direction: column; position: absolute; padding: .4%; background-color: black; border-radius: 1rem; top: 7.5vh; width: 12.6rem;}
+.submenu > li{ display: flex; padding: 5px; margin-bottom: 3%; margin-top: 3%; justify-content: center; transition: all 1.5s linear;}
+.submenu:hover{display: block;}
+.data{ display: flex; justify-content: center; }
+.data:hover .submenu {display: block; z-index: +1; box-shadow: 0rem 0rem .5rem rgb(0, 0, 255);}
+.logo{ transform: scale(0.5);}
+.profile{height: 6.5vh; display: flex; align-items: center; justify-content: center; border: solid 1.5px rgb(255, 255, 255); border-radius: 1rem; padding-left: .2rem; width: auto; font-family: 'Raleway', sans-serif;}
+.profile .i{ color: #fff;}
+.data > .prf{ top: 8.2vh; width: auto;}
+.profile > a{ box-shadow: none !important; cursor: pointer;}
+.menur{ color: white; float: right; font-size: 1.5rem; cursor: pointer; margin-right: 1rem; border-radius: .1rem; display: none; margin-top: 1.5%; }
+.menur:hover{ text-shadow: 0rem 0rem 1rem rgb(0, 0, 255);}#chbox{ display: none; }#chbox:hover{ text-shadow: 0 0 2rem rgb(0, 0, 255); }
+@media ( max-width: 1039px ){
+  nav a img {width: 75%;}
+  nav > ul{ position: fixed; width: 50%; height: 90Vh; background-color: rgba(0, 0, 0, 0.466); backdrop-filter: blur(15px); top: 10vh; flex-direction: column; transition: all 1s; right: -100%;
+  }
+.submenu{ left: 9rem; top: 6.5rem; width: 13rem; overflow: hidden; }
+.data > .prf{ position: absolute; top: 70vh; left: 5rem; width: 8rem;}
+.menur{ display: block; }
+#chbox:checked ~ .side{ right: 0; text-shadow: 0 0 2rem rgb(0, 0, 255); }
+.data:hover .submenu{animation: dropdown .2s linear;}}
+@keyframes dropdown{ from { transform: scaleY(0%); } to { transform: scaleY(100%); } }

@@ -1,0 +1,20 @@
+body{ display: flex; height: 85vh; justify-content: center; align-items: center; }
+.main{position: relative; }
+.cabecera{color: whitesmoke;background-color: black;text-align: center;font-weight: bold;font-size: 1.5em;width: 50vw;height: 3rem;display: flex;align-items: center;justify-content: center;}
+.cuerpo{height: 23vh;width: 50vw;background-color: whitesmoke;}
+form{margin: 0%;padding: 5%;display: flex;flex-direction: column;}
+.profileName{display: flex;flex-direction: column;}
+label{font-weight: bolder;}
+input{border: 0;padding: 2%;margin-bottom: 3%;}
+.botones{display: flex;justify-content: space-between;}
+.botonBonitoSend{color: green;background-color: white;width: 20%;height: 2rem;border-radius: 14rem;border: 1px solid green;font-weight: bold;margin: right 30%;cursor: pointer;}
+.botonBonitoSend:hover{background-color: green;color: white;}
+.botonBonitoSend::before{content: '';position: absolute;right: 0;bottom: 0;width: 0%;height: 3px;background-color: green;transition: width 0.2s ease-in-out;transform-origin: left;}
+.botonBonitoSend:hover::before{width: 100%;transform: scale(1);}
+.botonBonitoReturn{color: gray;background-color: white;width: 20%;height: 2rem;border-radius: 14rem;border: 1px solid gray;font-weight: bold;cursor: pointer;}
+.botonBonitoReturn::before{content: '';position: absolute;left: 0;bottom: 0;width: 0%;height: 3px;background-color: gray;transition: width 0.2s ease-in-out;transform-origin: left;}
+.botonBonitoReturn:hover{background-color: gray;color: white;border: 1px solid rgb(121, 118, 118);}
+.botonBonitoReturn:hover::before{width: 100%;transform: scaleX(1);}
+.botonBonitoSend[disabled]::before {opacity: 0; /* Disminuye la opacidad del elemento before cuando el botón esté deshabilitado */cursor: not-allowed;}
+.text-danger{color: red;font-size: small;text-align: center;}
+.botonBonitoSend[disabled] {background-color: lightgrey;color: darkgrey;border: 1px solid darkgrey;cursor: not-allowed;}

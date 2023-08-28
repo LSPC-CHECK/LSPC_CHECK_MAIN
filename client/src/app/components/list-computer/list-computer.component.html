@@ -1,0 +1,36 @@
+<app-nabvar></app-nabvar>
+<div class="main_es">
+  <h1>Computadores Usuario</h1>
+  <div class="btn-group">
+    <button [routerLink]="['/add-computer']"><i class="fa-solid fa-plus"></i> Nuevo Equipo</button>
+  </div>
+  <div class="datos">
+    <table datatable [dtOptions]="dtOptions" *ngIf="listComputer.length>0"id="tabla">
+      <thead>
+        <tr>
+          <th>Id serial</th>
+          <th>Color</th>
+          <th>Marca</th>
+          <th>Perifericos</th>
+          <th *ngIf="rolUser != roles2[3]">Usuario</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let computer of listComputer">
+            <td>{{computer.idSerial}}</td>
+            <td>{{computer.color}}</td>
+            <td>{{computer.mark}}</td>
+            <td>{{computer.peripherals}}</td>
+            <td *ngIf="rolUser != roles2[3]">{{computer.tbl_user.name}} {{computer.tbl_user.lastname}}</td>
+            <td>
+              <i *ngIf="rolUser === roles2[3]" [routerLink]="['/update-computer', computer.idComputer]" class="fa-solid fa-pen-to-square success"></i>
+              <i (click)="deleteComputer(computer.idComputer)" class="fa-solid fa-trash danger"></i>
+            </td>
+        </tr>
+      </tbody>
+    </table>
+    <h5 *ngIf="listComputer.length== 0">No tienes equipos registrados</h5>
+  </div>
+</div>
+<app-footer></app-footer>

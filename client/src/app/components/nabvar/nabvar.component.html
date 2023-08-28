@@ -1,0 +1,30 @@
+<header>
+  <nav>
+    <a routerLink="/home"><img src="https://i.ibb.co/Y066J1J/logo-LSPC3.png" class="logo" alt="LSPC-CHECK"></a>
+    <input type="checkbox" name="" id="chbox">
+    <label for="chbox" class="menur">
+      <i class="fa-solid fa-bars"></i>
+    </label>
+    <ul class="side">
+      <li><a routerLink="/home"><i class="fa-solid fa-house"></i> Inicio</a></li>
+      <li class="data"><a><i class="fa-solid fa-database"></i> Historial de datos</a>
+        <ul class="submenu">
+          <li *ngIf=" userRol === roles[0] || userRol === roles[2]"><a routerLink="/data-history"><i class="fa-solid fa-file"></i> Historial</a></li>
+          <li *ngIf=" userRol === roles[0] || userRol === roles[1] || userRol === roles[2] " ><a routerLink="/list-ent-sal"><i class="fa-solid fa-door-open"></i> Entradas/Salidas</a></li>
+          <li *ngIf=" userRol === roles[0] || userRol === roles[1] || userRol === roles[2] " ><a routerLink="/list-users"><i class="fa-solid fa-user"></i> Usuarios</a></li>
+          <li *ngIf=" userRol === roles[0] || userRol === roles[1] " ><a routerLink="/userprofile"><i class="fa-solid fa-id-card-clip"></i> Perfiles</a></li>
+          <li><a routerLink="/list-computers"><i class="fa-solid fa-laptop"></i> Mis Pc's</a></li>
+        </ul>
+      </li>
+      <li><a routerLink="/list-pqrs"><i class="fa-solid fa-person-circle-exclamation"></i> Novedades/PQRS</a></li>
+      <li><a routerLink="/about-us"><i class="fa-solid fa-users"></i> Nosotros</a></li>
+      <li class="data profile">
+        <a><i class="fa-solid fa-chevron-down i"></i> {{ userName }}</a>
+        <ul class="submenu prf">
+          <li><a [routerLink]="['/userprfconfig',idUser]"><i class="fa-solid fa-user"></i> Mi perfil</a></li>
+          <li><a (click)="logout()"><i class="fa-solid fa-right-from-bracket"></i> Salir</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+</header>

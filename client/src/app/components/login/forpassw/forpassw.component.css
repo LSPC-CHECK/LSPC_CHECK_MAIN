@@ -1,0 +1,13 @@
+body{ background-image: url('../../../../assets/images/background-login.svg'); background-size: cover; background-repeat: no-repeat; }
+section{ display: flex; align-items: center; justify-content: center; height: 84.9vh; margin-bottom: -3rem; }
+.main_es{width: 50%; margin-top: 13rem;}
+.btn[disabled]{ border-color: rgb(212, 212, 212); background-color: rgb(201, 201, 201);}
+.btn[disabled]:hover{ border-color: rgb(255, 0, 0); color: rgb(0, 0, 0); background-color: rgb(255, 18, 18); box-shadow: 0rem 0rem 1rem .1rem rgb(255, 0, 0);}
+.input-group{ position: relative; right: 15%; display: flex;align-items: center; justify-content: space-around; float: right; width: 65%; background-color: rgb(253, 253, 253); padding: 1rem; border-radius: .5rem; margin-bottom: 2rem; box-shadow: 0rem 0rem .5rem .1rem rgb(0, 0, 0);}
+.inputs{ color: rgb(0, 0, 0); margin-top: 2rem; position: relative;}
+.inputs > input{ border-bottom: 2px solid rgb(0, 0, 0); color: rgb(0, 0, 0); width: 30vw;}
+.wth100{ width: 100%; }
+@media (max-width: 958px) {
+  .btn-group > button{ position: relative; left: 5%; bottom: 0.5rem; width: auto;}
+  .wth50{ width: 50%; }
+}

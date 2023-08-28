@@ -1,0 +1,66 @@
+<app-nabvar></app-nabvar>
+<body>
+  <section id="historial">
+    <h1>Historial de los datos en el sistema</h1>
+    <div class="team">
+      <div class="text-team">
+        <p>Generamos la recopilación detallada de información relevante que se ha recopilado a lo largo del tiempo. Este registro puede incluir cualquier tipo de datos, desde información de la cantidad de clientes y equipos, pasando por registros de quejas, reclamos o problemas. Este medio es una herramienta crítica para analizar y evaluar el rendimiento del sistema, así como para identificar oportunidades de mejora.</p>
+      </div>
+    </div>
+    <div class="main-grafica graficaOpen" id="grafica">
+      <ngx-charts-bar-vertical
+      [legendTitle]="'Datos del sistema'"
+      [legend]="legend"
+      [showXAxisLabel]="showXAxisLabel"
+      [showYAxisLabel]="showYAxisLabel"
+      [xAxis]="xAxis"
+      [yAxis]="yAxis"
+      [xAxisLabel]="xAxisLabel"
+      [yAxisLabel]="yAxisLabel"
+      [results]="multi"
+      [gradient]="gradient">
+    </ngx-charts-bar-vertical>
+    <h5>Fecha de actualización: {{ fecha }}</h5>
+  </div>
+  <div class="datos tableClose" id="contentTable">
+    <table id="tabla">
+      <thead>
+        <tr>
+          <th>Cantidad Entradas</th>
+          <th>Cantidad Salidas</th>
+          <th>Cantidad Usuarios</th>
+          <th>Cantidad Perfiles</th>
+          <th>Cantidad Computadores</th>
+          <th>Cantidad Pqrs</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of dataContent">
+            <td>{{data.entradas}}</td>
+            <td>{{data.salidas}}</td>
+            <td>{{data.users}}</td>
+            <td>{{data.profiles}}</td>
+            <td>{{data.computers}}</td>
+            <td>{{data.pqrs}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+    <div class="marca">
+      <img src="https://i.ibb.co/LNCx1bk/logo-JJEAR-Technologies-transparent.png" class="jjear">
+      <img src="https://i.ibb.co/Y066J1J/logo-LSPC3.png" class="lspc">
+    </div>
+  </section>
+  <div class="btn-group">
+    <button (click)="download()"><i class="fa-regular fa-file-pdf"></i> Descargar</button>
+  </div>
+  <div class="mainLoad loadClose" id="load">
+    <div class="load">
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <span class="letras" >cargando</span>
+    </div>
+  </div>
+</body>
+<app-footer></app-footer>

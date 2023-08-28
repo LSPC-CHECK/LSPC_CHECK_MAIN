@@ -1,0 +1,23 @@
+<app-nabvar class="nav"></app-nabvar>
+<main>
+    <section>
+        <article>
+            <div class="texts">
+                <div class="container">
+                    <h1> Bienvenido </h1>
+                    <span>{{ userName }} {{ secUserName }}</span>
+                    <span title="last">{{ lastName }} {{ secSurName }}</span>
+                    <h2> al sistema LSPC </h2>
+                    <p [ngClass]="{'admon':rol === rols[0], 'direct':rol === rols[1], 'aux':rol === rols[2], 'extUser':rol === rols[3]}" >{{ rol }}</p>
+                </div>
+            </div>
+        </article>
+    </section>
+    <section>
+        <div class="mainIframe">
+            <div class="icontenedor">
+                <iframe src='https://my.spline.design/lspc-ccc6c352946d8f1344cde1e2820f706a/' class="frame"></iframe>
+            </div>
+        </div>
+    </section>
+</main>

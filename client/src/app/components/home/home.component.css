@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+/* Inicio portada */
+.texts {position: relative; height: 90vh; width: 50%; float: left; background-color: rgb(0, 0, 0); overflow: hidden; display: flex; align-items: center;}
+.icontenedor {position: relative;padding-bottom: 80%;height: 0;overflow: hidden;width: 100%;}
+.frame {position: absolute;top: 0;left: 0;width: 100%;height: 100%;border: 0;}
+.mainIframe {background-color: rgb(0, 0, 0);width: 50%; height: 90vh; display: flex; align-items: center;justify-content: center;}
+.container {width: 100%;display: block;font-size: 2rem;height: 30vh;}
+h1,h2,span,p {font-family: 'Josefin Sans', sans-serif;}
+h1,h2,span {font-family: 'Josefin Sans', sans-serif;text-shadow: 1px 1px 5px rgb(0, 4, 255);}
+h1 {position: relative;color: rgb(223, 223, 223);margin-left: 8%;font-size: 2rem;margin-top: 2rem;transition: all 1.5s linear;z-index: +2;}
+h2 {position: relative;color: rgb(223, 223, 223);margin-left: 45%;font-size: 2rem;transition: all 1.5s linear;z-index: +2;}
+span {position: relative;color: rgb(0, 0, 255);margin-left: 25%;transition: all 1.5s linear;display: flex;flex-direction: column;}
+[title~='last'] {margin-left: 40%;}
+/* Fin portada */
+/* rol colors and ubications*/
+p {position: relative;left: 70%;display: flex;justify-content: center;color: black;font-size: 1rem;padding: 0 .5rem 0 .5rem;border-radius: 1rem;transition: all 1.5s linear;}
+.admon {width: 8rem;background: linear-gradient(45deg, rgba(0, 81, 255) 0%, rgb(174, 0, 255) 90%);}
+.extUser {width: 9rem;background-color: rgb(0, 81, 255);}
+.aux {width: 12rem;background-color: rgb(255, 183, 0);}
+.direct {width: 8rem;background-color: rgb(255, 0, 0);}
+/* Fin rol colors and ubications*/
+/*Inicio Responsive*/
+@media (max-width:900px) {
+  .container {display: flex;align-items: center;flex-direction: column;}
+  h1,h2,span,p,[title~='last'] {margin: 0;left: 0;}
+}
+/*Fin Responsive*/

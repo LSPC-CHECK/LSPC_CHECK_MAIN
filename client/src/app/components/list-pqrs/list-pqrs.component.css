@@ -1,0 +1,24 @@
+.main{ position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1; }
+.cabecera{ color: whitesmoke; background-color: black; text-align: center; font-weight: bold; font-size: 1.2rem; width: 50vw; height: 3rem; align-items: center;}
+.cuerpo{ width: 50vw; background-color: whitesmoke; }
+form{ margin: 0%; padding: 5%; display: grid; grid-template-columns: 1fr 1fr; /* dividir en dos columnas de igual ancho */ grid-gap: 2rem; }
+.Name{ display: flex; flex-direction: column; }
+label{ font-weight: bolder; }
+input, textarea{ border: 0; padding: 4%; }
+.botones{ display: flex;justify-content: space-between; }
+.botonBonitoSend{ color: green;background-color: white;width: 35%;height: 2rem;border-radius: 14rem;border: 1px solid green;font-weight: bold;margin: right 30%;cursor: pointer; }
+.botonBonitoSend:hover{ background-color: green;color: white; }
+.botonBonitoSend::before{ content: '';position: absolute;right: 0;top: 99%;width: 0%;height: 3px;background-color: green;transition: width 0.2s ease-in-out;transform-origin: left; }
+.botonBonitoSend:hover::before{ width: 100%;transform: scale(1); }
+.botonBonitoSend[disabled]::before{ opacity: 0; /* Disminuye la opacidad del elemento before cuando el botón esté deshabilitado */cursor: not-allowed; }
+.botonBonitoSend[disabled]{ background-color: lightgrey;color: darkgrey;border: 1px solid darkgrey;cursor: not-allowed; }
+.custom-select { -webkit-appearance: none;-moz-appearance: none;appearance: none;border: none;padding: 10px;font-size: 16px;width: 100%;cursor: pointer;outline: none;margin-bottom: 2%; }
+.custom-select option { background-color: #fff;color: #333;padding: 10px;font-size: 16px;font-family: 'Arial', sans-serif;cursor: pointer; }
+.custom-select option:hover { background-color: #eee; }
+#add-pqrs { height: 70%; width: 50vw; background-color: whitesmoke;  animation-name: addPqrs; animation-duration: 2s; animation-timing-function: ease-in-out; animation-delay: 1; animation-direction: normal; }
+.add-pqrs-inactivo, .cabecera { display: none; }
+.add-pqrs-activo, .cabecera{ display: grid;}
+.close{position: absolute; left: 92%;}
+.btn-group > button{ position: relative; left: 39%; bottom: 1.5rem; width: auto;}
+@keyframes addPqrs { 0% { opacity: 0.25; transform: translateY(-100px); } 20%, 80% { opacity: 1; transform: translateY(0); } }
+.desc { width: 13rem; }

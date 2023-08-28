@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap');
+* {margin: 0; padding: 0; box-sizing: border-box;  }
+body { background-color: rgb(238, 238, 238); font-family: 'Montserrat', sans-serif; }
+/* INICIO DEL LOGIN */
+.image { width: 45%; height: 100vh;}
+.image > img {height: 100vh; width: 100%; overflow: hidden;}
+.front{position: absolute; background-color: rgba(0, 17, 255, 0.055); backdrop-filter: blur(2px); min-height: 100vh; z-index: 1; width: 45%; top: 0%;}
+.login-form { width: 55%;}
+.login-title {display: flex; justify-content: center; align-items: center; font-size: 17px; margin-bottom: 15%;}
+.login-title > h1 span { color: blue;}
+.input-group {width: 60%;}
+.inputs {display: flex; flex-direction: column; margin-bottom: 8%; width: 250px; }
+.inputs label{font-size: 1rem;}
+.inputs > input {background-color: transparent; outline: none; border: none; border-bottom: 2px solid black; height: 50px; padding-left: 1rem;}
+.inputs > input:focus::placeholder {opacity: 0.7;}
+.btn-group { display: flex; width: 100%; justify-content: space-around; align-items: center;}
+.btn-group > a { text-decoration: none; font-weight: bolder; color: rgb(0, 0, 0); transition: all .4s linear;}
+.btn-group > a:hover{ color: rgb(107, 107, 107); }
+.btn-group > button { padding: 1%; border: 2px solid #000; background-color: transparent; width: 30%; border-radius: 6px; box-sizing: initial; font-size: 17px; cursor: pointer;}
+.btn-group > button:hover { transition: all .8s; background-color: #000; box-shadow: 2px 2px 12px 2px #fff; color: #fff; box-shadow: 2px 2px 20px 3px #000;}
+.alert{color: red; margin-bottom: -7.5%; font-size: small; text-align: center; }
+/* FIN DEL LOGIN */
+/*INICIO ENTRADA-SALIDA*/
+.main_es{width: 100%; text-align: center; min-height: 71.3vh;}
+.main_es h1{position: relative; left: 10%; width: 80%; font-weight: bold; padding: 1rem; margin-bottom: .1rem;}
+.datos{position: relative; left: 5%; width: 90%; border-radius: .5rem; transition: all .2s linear; padding: 1%; margin-bottom: 6vh;}
+.datos table{width: 100%; border-radius: .5rem; font-size: 15px; border-collapse: collapse; empty-cells: show; padding-top: 1%; }
+.datos table thead{background-color: rgb(0, 0, 0); color: #ffffff;}
+.datos table thead tr th{padding: .5%; text-align: center;}
+.datos table tbody{max-height: 20vh;}
+.datos table tbody tr:nth-of-type(even){background-color: rgb(63, 63, 63); color: rgb(255, 255, 255);}
+.datos table tbody tr td{padding: 1%;}
+.datos table tbody tr:hover{box-shadow: 1px 1px 1rem .1rem rgba(4, 0, 255, 0.658);}
+.des{width: 30%;}
+/*FIN ENTRADA-SALIDA*/
+.fa-solid{margin-right: 10px; cursor: pointer; transition: all .6s linear;}
+.success:hover{color: rgb(255, 166, 0);}
+.danger:hover{color: rgb(255, 0, 0);}
+
+/* load animations */
+.loadClose{ display: none; }
+.loadOpen{ display: flex; }
+.mainLoad{ position: absolute;  top: 0; z-index: 1; width: 100%; justify-content: center; align-items: center; backdrop-filter: blur(10px); background-color: #00000083;}
+.load{ position: sticky; top: 0; bottom: 0; height: 100vh; display: flex; justify-content: center; align-items: center; }
+.circle{ position: absolute; width: 300px; height: 300px; border-radius: 50%; border: 15px solid transparent; background-color: transparent; filter: drop-shadow(0 0 15px rgb(0, 110, 255)) drop-shadow(0 0 10px rgb(204, 0, 255)); }
+.circle:nth-child(1){ border-top: 15px solid rgb(0, 89, 255); animation: animate-1 2s linear infinite; }
+.circle:nth-child(2){ border-top: 15px solid rgb(255, 255, 255); animation: animate-2 2s linear infinite; }
+.circle:nth-child(3){ border-top: 15px solid rgb(150, 0, 150); animation: animate-3 2s linear infinite; }
+.circle::before{ position: absolute; content: ''; width: 30px; height: 30px; border-radius: 50%; background-color: rgb(199, 199, 199); top: 20px; left: 20px; }
+.letras{ font-size: 18px; color: #ffffff; text-transform: uppercase; letter-spacing: 4px; font-weight: 700; text-shadow: 0 0 5px currentColor; animation: flick 1.5s linear infinite; }
+.letras::after{ position: absolute; content: ''; animation: cont 1.5s linear infinite ; }
+@keyframes animate-1{
+  0%{ transform: rotateZ(120deg) rotateX(60deg) rotateZ(0deg); }
+  100%{ transform: rotateZ(120deg) rotateX(60deg) rotateZ(360deg); }
+}
+@keyframes animate-2{
+  0%{ transform: rotateZ(240deg) rotateX(60deg) rotateZ(0deg); }
+  100%{ transform: rotateZ(240deg) rotateX(60deg) rotateZ(360deg); }
+}
+@keyframes animate-3{
+  0%{ transform: rotateZ(0) rotateX(60deg) rotateZ(0deg); }
+  100%{ transform: rotateZ(0) rotateX(60deg) rotateZ(360deg); }
+}
+@keyframes flick {
+  0%{ opacity: 0.5; }
+  50%{ opacity: 1; }
+  100%{ opacity: 0.5; }
+}
+@keyframes cont {
+  0%{ content: ''; }
+  10%{ content: '.'; }
+  50%{ content: '..'; }
+  100%{ content: '...'; }
+}

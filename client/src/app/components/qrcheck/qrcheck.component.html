@@ -1,0 +1,43 @@
+<app-nabvar></app-nabvar>
+<body>
+  <div class="main">
+      <div class="cabecera">
+          <span>Registrar Entrada | Salida</span>
+      </div>
+      <div class="cuerpo">
+          <form *ngIf="!submitted" [formGroup]="QrForm" (ngSubmit)="onSubmit()">
+              <div class="Name">
+                  <label for="idUser">Usuario</label>
+                  <input readonly type="text" id="idUser" name="idUser" formControlName="user">
+              </div>
+              <div class="Name">
+                <label for="idComputer">Selecciona El Equipo</label>
+                <select required id="idComputer" name="idComputer" formControlName="idComputer" class="custom-select">
+                    <option value=""disable selected>Selecciona una opcion</option>
+                  <option *ngFor="let computer of computers" [value]="computer.id_computer">{{ computer.id_serial }} | {{ computer.mark }}</option>
+                </select>
+                <div class="text-danger" *ngIf="QrForm.get('idComputer')?.invalid && (QrForm.get('idComputer')?.dirty || QrForm.get('idComputer')?.touched)">
+                  Se requiere un Equipo
+                </div>
+            </div>
+              <div class="Name">
+                  <label for="tipoTransac">Selecciona el tipo de transacción</label>
+                  <select required id="tipoTransac" name="tipoTransac" formControlName="tipoTransac" class="custom-select">
+                    <option value="" disabled selected>Selecciona una opcion</option>
+                    <option value="Entrada">Entrada</option>
+                    <option value="Salida">Salida</option>
+                  </select>
+                  <div class="text-danger" *ngIf="QrForm.get('tipoTransac')?.invalid && (QrForm.get('tipoTransac')?.dirty || QrForm.get('tipoTransac')?.touched)">
+                    Este campo es requerido
+                  </div>
+              </div>
+              <div class="botones">
+                  <button class="botonBonitoReturn" [routerLink]="['/home']">Regresar</button>
+                  <button class="botonBonitoSend" type="submit" id="submitButton" [disabled]="!QrForm.valid">Enviar</button>
+              </div>
+          </form>
+      </div>
+  </div>
+</body>
+<app-footer></app-footer>
+

@@ -1,0 +1,28 @@
+<body>
+  <section>
+    <div class="main_es">
+      <div class="input-group">
+        <form  *ngIf="!submitted" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+          <div class="form-group inputs wth100">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" formControlName="email"  name="email" required>
+            <div class="alert" *ngIf="userForm.get('email')?.invalid && (userForm.get('email')?.dirty || userForm.get('email')?.touched)">Se requiere un correo</div>
+            <div class="alert" *ngIf="userForm.get('email')?.hasError('email') && (userForm.get('email')?.dirty || userForm.get('email')?.touched)">Debes ingresar un email valido</div>
+          </div>
+          <div class="btn-group">
+            <button type="submit" class="btn btn-primary " [disabled]="!userForm.valid"><i class="fa-regular fa-circle-up"></i> Enviar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="mainLoad loadClose" id="load">
+      <div class="load">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <span class="letras" >cargando</span>
+      </div>
+    </div>
+  </section>
+</body>
+<app-footer></app-footer>

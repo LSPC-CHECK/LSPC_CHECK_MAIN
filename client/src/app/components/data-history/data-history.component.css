@@ -1,0 +1,18 @@
+body{ min-height: 67.6vh; }
+section{ display: flex; align-items: center; flex-direction: column; margin-top: 2rem; }
+.main-grafica{ margin-top: 2rem; width: 60%; height: 65vh; }
+.team{margin-top: 1.5rem; width: 55%; height: 20%; box-shadow: 5px 5px 12px 4px rgba(0, 0, 0, 0.507); padding: 1rem;margin-bottom: 1.5rem; display: flex; justify-content: center; border-radius: .3rem; }
+.team > img{ width: 250px; height: 250px; }
+.team > p{width: 70%; padding: 5%; }
+.text-team{text-align: center; padding: 2%;}
+.btn-group{ position: relative; justify-content: end; right: 5rem; }
+.btn-group > button{ width: 6rem; height: .5rem; display: flex; align-items: center; justify-content: space-between;  }
+.btn-group > button > i{ position: relative; top: -.1rem; }
+.marca{ display: flex; justify-content: space-around; width: 80%; margin-top: 2rem; }
+.marca > .jjear{ width: 10rem;}
+.marca > .lspc{ width: 10rem; height: 5rem; margin-top: 2rem;}
+.loadOpen{ height: 200vh; }
+.datos{ width: 60%; display: flex; align-items: center; margin: 0; padding: 0; left: 0; right: 0; }
+.datos table tbody tr td{ text-align: center; }
+.tableOpen, .graficaOpen{ display: block; }
+.tableClose, .graficaClose{ display: none; }

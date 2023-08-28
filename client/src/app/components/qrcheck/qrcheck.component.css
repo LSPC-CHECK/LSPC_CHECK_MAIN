@@ -1,0 +1,23 @@
+body{ display: flex; height: 85vh; justify-content: center; align-items: center; }
+.main{position: relative;}
+.cabecera{ width: 30vw; color: whitesmoke;background-color: black;text-align: center;font-weight: bold;font-size: 1.5em;height: 3rem;display: flex;align-items: center;justify-content: center;}
+.cuerpo{ width: 30vw;height: 70%;background-color: whitesmoke;}
+form{margin: 0%;padding: 5%;display: grid;grid-template-columns: 1fr; /* dividir en dos columnas de igual ancho */grid-gap: 2rem;}
+.Name{display: flex;flex-direction: column;}
+label{font-weight: bolder;}
+input{border: 0;padding: 5%;margin-bottom: 3%;}
+.botones{display: flex;justify-content: space-between;}
+.botonBonitoSend{color: green;background-color: white;width: 30%;height: 2rem;border-radius: 14rem;border: 1px solid green;font-weight: bold;cursor: pointer;}
+.botonBonitoSend:hover{background-color: green;color: white;}
+.botonBonitoSend::before{content: '';position: absolute;right: 0;top: 99%;width: 0%;height: 3px; background-color: green;transition: width 0.2s ease-in-out;transform-origin: left;}
+.botonBonitoSend:hover::before{width: 100%;transform: scale(1);}
+.botonBonitoReturn{color: gray;background-color: white;width: 30%;height: 2rem;border-radius: 14rem;border: 1px solid gray;font-weight: bold;cursor: pointer;}
+.botonBonitoReturn::before{content: '';position: absolute;left: 0;top: 99%;width: 0%;height: 3px;background-color: gray;transition: width 0.2s ease-in-out;transform-origin: left;}
+.botonBonitoReturn:hover{background-color: gray;color: white;border: 1px solid rgb(121, 118, 118);}
+.botonBonitoReturn:hover::before{width: 100%;transform: scaleX(1);}
+.botonBonitoSend[disabled]::before {opacity: 0; /* Disminuye la opacidad del elemento before cuando el botón esté deshabilitado */cursor: not-allowed;}
+.text-danger{color: red;font-size: small;text-align: center;}
+.botonBonitoSend[disabled]{background-color: lightgrey;color: darkgrey;border: 1px solid darkgrey;cursor: not-allowed;}
+.custom-select {-webkit-appearance: none;-moz-appearance: none;appearance: none;border: none;padding: 10px;font-size: 16px;width: 100%;cursor: pointer;outline: none;margin-bottom: 2%;}
+.custom-select option {background-color: #fff;color: #333;padding: 10px;font-size: 16px;font-family: 'Arial', sans-serif;cursor: pointer;}
+.custom-select option:hover {background-color: #eee;}

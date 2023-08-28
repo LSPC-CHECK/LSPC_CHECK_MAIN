@@ -1,0 +1,69 @@
+<app-nabvar></app-nabvar>
+<body>
+  <div class="main">
+      <div class="cabecera">
+          <span>Actualizar usuarios</span>
+      </div>
+      <div class="cuerpo">
+          <form *ngIf="!submitted" [formGroup]="userForm" (ngSubmit)="onUpdate()">
+              <div class="Name">
+                  <label for="idSerial">Actualizar name</label>
+
+                  <input readonly type="text" id="name" name="name" formControlName="name" placeholder="Roberto">
+                  <div class="text-danger" *ngIf="userForm.get('name')?.invalid && (userForm.get('name')?.dirty || userForm.get('name')?.touched)">
+                      Se requiere un nombre
+                  </div>
+              </div>
+              <div class="Name">
+                  <label for="lastname">Actualizar Apellido</label>
+
+                  <input readonly type="text" id="lastname" name="lastname" formControlName="lastname" placeholder="Restrepo">
+                  <div class="text-danger" *ngIf="userForm.get('lastname')?.invalid && (userForm.get('lastname')?.dirty || userForm.get('lastname')?.touched)">
+                      Se requiere un Apellido
+                  </div>
+              </div>
+              <div class="Name">
+                  <label for="peripherals">Actualizar Correo</label>
+
+                  <input readonly type="text" id="email" name="email" formControlName="email" placeholder="Roberto@gmail.com">
+                  <div class="text-danger" *ngIf="userForm.get('email')?.invalid && (userForm.get('email')?.dirty || userForm.get('email')?.touched)">
+                      Se requiere Correo
+                  </div>
+              </div>
+              <div class="Name">
+                  <label for="peripherals">Actualizar card </label>
+
+                  <input readonly type="text" id="cardId" name="cardId" formControlName="cardId" placeholder="110234532">
+                  <div class="text-danger" *ngIf="userForm.get('cardId')?.invalid && (userForm.get('cardId')?.dirty || userForm.get('cardId')?.touched)">
+                      Se requiere card
+                  </div>
+              </div>
+              <div class="Name">
+                  <label for="idProfile">Selecciona Rol</label>
+                  <select readonly id="idProfile" name="idProfile" formControlName="idProfile" class="custom-select">
+                      <option value=""disable selected>Selecciona una opcion</option>
+                    <option *ngFor="let profile of profile" [value]="profile.idProfile">{{ profile.idProfile }} {{ profile.name }}</option>
+                  </select>
+                  <div class="text-danger" *ngIf="userForm.get('idProfile')?.invalid && (userForm.get('idProfile')?.dirty || userForm.get('idProfile')?.touched)">
+                    Se requiere un Rol
+                  </div>
+              </div>
+              <div class="Name">
+                  <label for="state">Selecciona estado</label>
+                  <select id="state" name="state" formControlName="state" class="custom-select">
+                      <option value=""disable selected>Selecciona una opcion</option>
+                    <option *ngFor="let state of state" [value]="state">{{state}}</option>
+                  </select>
+                  <div class="text-danger" *ngIf="userForm.get('state')?.invalid && (userForm.get('state')?.dirty || userForm.get('state')?.touched)">
+                    Se requiere un Rol
+                  </div>
+              </div>
+              <div class="botones">
+                  <button class="botonBonitoReturn" [routerLink]="['/list-users']">Regresar</button>
+                  <button class="botonBonitoSend" id="submitButton" [disabled]="!userForm.valid">Enviar</button>
+              </div>
+          </form>
+      </div>
+  </div>
+</body>
+<app-footer></app-footer>

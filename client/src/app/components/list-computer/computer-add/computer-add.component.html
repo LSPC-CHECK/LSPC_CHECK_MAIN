@@ -1,0 +1,59 @@
+<app-nabvar></app-nabvar>
+<body>
+  <div class="main">
+      <div class="cabecera">
+          <span>crear un nuevo Equipo</span>
+      </div>
+      <div class="cuerpo">
+          <form *ngIf="!submitted" [formGroup]="computerForm" (ngSubmit)="onSubmit()">
+              <div class="Name">
+                  <label for="idSerial">Nuevo Serial</label>
+
+                  <input required type="text" id="idSerial" name="idSerial" formControlName="idSerial" placeholder="A2SDX2">
+                  <div class="text-danger" *ngIf="computerForm.get('idSerial')?.invalid && (computerForm.get('idSerial')?.dirty || computerForm.get('idSerial')?.touched)">
+                      Se requiere un id Serial
+                  </div>
+              </div>
+              <div class="Name">
+                  <label for="color">Nuevo color</label>
+
+                  <input required type="text" id="color" name="color" formControlName="color" placeholder="negro">
+                  <div class="text-danger" *ngIf="computerForm.get('color')?.invalid && (computerForm.get('color')?.dirty || computerForm.get('color')?.touched)">
+                      Se requiere un color
+                  </div>
+              </div>
+              <div class="Name">
+                  <label for="mark">Nuevo marca</label>
+
+                  <input required type="text" id="mark" name="mark" formControlName="mark" placeholder="ASUS">
+                  <div class="text-danger" *ngIf="computerForm.get('mark')?.invalid && (computerForm.get('mark')?.dirty || computerForm.get('mark')?.touched)">
+                      Se requiere una marca
+                  </div>
+              </div>
+              <div class="Name">
+                  <label for="peripherals">Nuevo periféricos</label>
+
+                  <input required type="text" id="peripherals" name="peripherals" formControlName="peripherals" placeholder="Mouse,Teclado">
+                  <div class="text-danger" *ngIf="computerForm.get('peripherals')?.invalid && (computerForm.get('peripherals')?.dirty || computerForm.get('peripherals')?.touched)">
+                      Se requiere periféricos
+                  </div>
+              </div>
+              <div class="Name" *ngIf=" userRol === roles[0] || userRol === roles[1] || userRol === roles[2] ">
+                  <label for="idUser">Selecciona id User</label>
+                  <select required id="idUser" name="idUser" formControlName="idUser" class="custom-select">
+                      <option value=""disable selected>Selecciona una opcion</option>
+                    <option *ngFor="let user of users" [value]="user.idUser">{{ user.idUser }} {{ user.name }}</option>
+                  </select>
+                  <div class="text-danger" *ngIf="computerForm.get('idUser')?.invalid && (computerForm.get('idUser')?.dirty || computerForm.get('idUser')?.touched)">
+                    Se requiere un id user
+                  </div>
+              </div>
+              <div class="botones">
+                  <button class="botonBonitoReturn" [routerLink]="['/list-computers']">Regresar</button>
+                  <button class="botonBonitoSend" id="submitButton" [disabled]="!computerForm.valid">Enviar</button>
+              </div>
+          </form>
+      </div>
+  </div>
+</body>
+<app-footer></app-footer>

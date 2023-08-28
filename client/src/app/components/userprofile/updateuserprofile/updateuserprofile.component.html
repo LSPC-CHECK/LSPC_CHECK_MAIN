@@ -1,0 +1,22 @@
+<app-nabvar></app-nabvar>
+<body>
+  <div class="main">
+      <div class="cabecera">
+        <span>Actualizar perfiles</span>
+      </div>
+      <div class="cuerpo">
+        <form [formGroup]="profileForm" (ngSubmit)="onUpdate()" >
+          <div class="profileName">
+            <label for="name">Editar Nombre</label>
+            <input required type="text" id="name" name="nameProfile" formControlName="name" >
+            <div class="text-danger" *ngIf="profileForm.get('name')?.invalid && (profileForm.get('name')?.dirty || profileForm.get('name')?.touched)">Se requiere un nombre de perfil</div>
+            <div class="botones">
+              <button class="botonBonitoReturn" [routerLink]="['/userprofile']">Regresar</button>
+              <button class="botonBonitoSend" id="submitButton" [disabled]="!profileForm.valid">Enviar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+  </div>
+</body>
+<app-footer></app-footer>

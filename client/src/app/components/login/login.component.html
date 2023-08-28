@@ -1,0 +1,80 @@
+<body>
+  <div class="container" [ngClass]="container">
+    <div class="form-container sign-up-container">
+      <form [formGroup]="userForm" (ngSubmit)="addUser()">
+        <div class="login-title">
+          <h1>C<span>r</span>e<span>a</span>r<span> C</span>u<span>e</span>n<span>t</span>a</h1>
+        </div>
+        <div class="inputs">
+          <input type="text" name="name" placeholder="Ingresa tu primer nombre" formControlName="name">
+          <div class="alert" *ngIf="userForm.get('name')?.hasError('required') && (userForm.get('name')?.dirty || userForm.get('name')?.touched)">El nombre es requerido</div>
+        </div>
+        <div class="inputs">
+          <input type="text" name="lastName" placeholder="Ingresa tu primer apellido" formControlName="lastName">
+          <div class="alert" *ngIf="userForm.get('lastName')?.hasError('required') && (userForm.get('lastName')?.dirty || userForm.get('lastName')?.touched)">El apellido es requerido</div>
+        </div>
+        <div class="inputs">
+          <input type="email" name="email" placeholder="Ingresa tu email" formControlName="email">
+          <div class="alert" *ngIf="userForm.get('email')?.hasError('required') && (userForm.get('email')?.dirty || userForm.get('email')?.touched)">El email es requerido</div>
+          <div class="alert" *ngIf="userForm.get('email')?.hasError('email') && (userForm.get('email')?.dirty || userForm.get('email')?.touched)">Debes ingresar un email valido</div>
+        </div>
+        <div class="inputs">
+          <input type="text" name="document" placeholder="Ingresa tu documento" formControlName="cardId" minlength="8" maxlength="10">
+          <div class="alert" *ngIf="userForm.get('cardId')?.hasError('required') && (userForm.get('cardId')?.dirty || userForm.get('cardId')?.touched)">El documento es requerido</div>
+          <div class="alert" *ngIf="userForm.get('cardId')?.hasError('minlength') && (userForm.get('cardId')?.touched)">El documento debe tener minimo 7 caracteres</div>
+          <div class="alert" *ngIf="userForm.get('cardId')?.hasError('maxlength') && (userForm.get('cardId')?.touched)">El documento debe tener máximp 10 caracteres</div>
+        </div>
+        <div class="inputs">
+          <input type="password" name="password" placeholder="Ingresa tu contraseña" formControlName="password">
+          <div class="alert" *ngIf="userForm.get('password')?.hasError('required') && (userForm.get('password')?.dirty || userForm.get('password')?.touched)">La contraseña es requerida</div>
+        </div>
+        <div class="btn-group">
+          <button type="submit" name="btn" class="btn" [disabled]="!userForm.valid"><i class="fa-solid fa-paper-plane"></i>  Enviar</button>
+        </div>
+      </form>
+    </div>
+    <div class="form-container sign-in-container">
+      <form class="form" [formGroup]="userForm">
+        <div class="login-title">
+          <h1>I<span>n</span>i<span>c</span>i<span>o</span> d<span>e</span> S<span>e</span>s<span>i</span>ó<span>n</span></h1>
+        </div>
+        <div class="inputs">
+          <label for="">Documento</label>
+          <input type="text" name="document" placeholder="Ej: 1000000000"  formControlName="cardId">
+          <div class="alert" *ngIf="userForm.get('cardId')?.hasError('required') && (userForm.get('cardId')?.dirty || userForm.get('cardId')?.touched)">El documento es Obligatorio</div>
+          <div class="alert" *ngIf="userForm.get('cardId')?.hasError('minlength') && (userForm.get('cardId')?.touched)">El documento debe tener minimo 7 caracterez</div>
+          <div class="alert" *ngIf="userForm.get('cardId')?.hasError('maxlength') && (userForm.get('cardId')?.touched)">El documento debe tener máximp 10 caracteres</div>
+        </div>
+        <div class="inputs">
+          <label for="">Contraseña</label>
+          <input [type]="show ? 'text':'password'" name="password" placeholder="°°°°°°°°°°" formControlName="password">
+            <i class="fa-solid fa-eye" *ngIf="show" (click)="showPass()"></i>
+            <i class="fa-solid fa-eye-slash" *ngIf="!show" (click)="showPass()"></i>
+          <div class="alert" *ngIf="userForm.get('password')?.hasError('required') && (userForm.get('password')?.dirty || userForm.get('password')?.touched)">La contraseña es Obligatorio</div>
+        </div>
+        <a routerLink="/forpassw" class="forgot"><i class="fa-sharp fa-solid fa-circle-exclamation"></i>¿Ha olvidado su contraseña?</a>
+        <div class="btn-group">
+          <button type="submit" (click)="login()"><i class="fa-solid fa-paper-plane"></i>Ingresar</button>
+        </div>
+      </form>
+    </div>
+    <div class="overlay-container">
+      <div class="overlay">
+        <div class="overlay-panel overlay-left">
+          <h1>¡Bienvenido a LSPC-CHECK!</h1>
+          <p>Para mantenerte conectado con nosotros por favor inicia sesión con tus datos personales</p>
+          <div class="btn-group">
+            <button (click)="loginButton()">Iniciar sesión</button>
+          </div>
+        </div>
+        <div class="overlay-panel overlay-right">
+          <h1>¡Hola, amigo!</h1>
+          <p>Introduce tus datos personales y empieza a viajar con nosotros</p>
+          <div class="btn-group">
+            <button (click)="registerButton()">Registrate</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

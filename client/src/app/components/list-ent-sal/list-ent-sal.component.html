@@ -1,0 +1,28 @@
+<app-nabvar></app-nabvar>
+<div class="main_es">
+  <h1>{{ title }}</h1>
+  <div class="datos">
+    <table datatable [dtOptions]="dtOptions" *ngIf="listEntSal.length > 0" id="tabla">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Serial | Marca Equipo</th>
+          <th>Hora</th>
+          <th>Fecha</th>
+          <th>Transacción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let entSal of listEntSal">
+          <td>{{ entSal.tbl_user.name }} {{ entSal.tbl_user.lastname }}</td>
+          <td>{{ entSal.tbl_computer.id_serial }} | {{ entSal.tbl_computer.mark }}</td>
+          <td>{{ entSal.time }}</td>
+          <td>{{ entSal.date | date }}</td>
+          <td>{{ entSal.tipoTransac }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <h5 *ngIf="listEntSal.length == 0">There are no registered pqrs</h5>
+  </div>
+</div>
+<app-footer></app-footer>

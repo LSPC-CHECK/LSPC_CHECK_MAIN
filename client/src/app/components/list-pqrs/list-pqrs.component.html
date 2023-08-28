@@ -1,0 +1,78 @@
+<app-nabvar></app-nabvar>
+<div class="main_es">
+  <h1>PQRS Registradas</h1>
+  <div class="btn-group">
+    <button (click)="PqrsForm('open')"><i class="fa-solid fa-plus"></i> Crear</button>
+  </div>
+  <div class="datos">
+    <table datatable [dtOptions]="dtOptions" *ngIf="listPqrs.length > 0" id="tabla">
+      <thead>
+        <tr>
+          <th *ngIf="userRol != roles[3]">Nombre</th>
+          <th>Razón</th>
+          <th class="desc">Descripción</th>
+          <th>Hora</th>
+          <th>Fecha</th>
+          <th>Transacción</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pqrs of listPqrs">
+          <td *ngIf="userRol != roles[3]">{{ pqrs.tbl_user.name }} {{ pqrs.tbl_user.lastname }}</td>
+          <td>{{ pqrs.reason }}</td>
+          <td class="desc">{{ pqrs.description }}</td>
+          <td>{{ pqrs.time }}</td>
+          <td>{{ pqrs.date | date }}</td>
+          <td>{{ pqrs.tipoTransac }}</td>
+          <td><i [routerLink]="['/update-pqrs', pqrs.idInform]" class="fa-solid fa-pen-to-square success"></i>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h5 *ngIf="listPqrs.length == 0">There are no registered pqrs</h5>
+  </div>
+</div>
+<div class="main">
+  <div class="cuerpo add-pqrs-inactivo" id="add-pqrs">
+    <div class="cabecera">
+      <span>Agregar PQRS</span>
+      <i class="fa-solid fa-circle-xmark danger close" (click)="PqrsForm('close')"></i>
+    </div>
+    <form [formGroup]="pqrsForm" (ngSubmit)="addPqrs()">
+      <div class="Name">
+        <label for="tipoTransac">Tipo Transacción</label>
+          <select required id="tipoTransac" name="tipoTransac" formControlName="tipoTransac" class="custom-select">
+            <option value="" disabled selected>-- SELECCIONAR --</option>
+            <option value="Novedad">Novedad</option>
+            <option value="PQRS">PQRS</option>
+          </select>
+          <div class="alert" *ngIf="pqrsForm.get('tipoTransac')?.invalid && (pqrsForm.get('tipoTransac')?.dirty || pqrsForm.get('tipoTransac')?.touched)">Se requiere un tipo de transacción</div>
+      </div>
+      <div class="Name">
+        <label for="time">Hora</label>
+        <input required type="time" id="time" name="time" formControlName="time">
+        <div class="alert" *ngIf="pqrsForm.get('time')?.invalid && (pqrsForm.get('time')?.dirty || pqrsForm.get('time')?.touched)">Se requiere hora</div>
+      </div>
+      <div class="Name">
+        <label>Razón</label>
+        <input required type="text" id="reason" name="reason" placeholder="Ingresa la razón" formControlName="reason">
+        <div class="alert" *ngIf="pqrsForm.get('reason')?.invalid && (pqrsForm.get('reason')?.dirty || pqrsForm.get('reason')?.touched)">Se requiere una razón</div>
+      </div>
+      <div class="Name">
+        <label for="date">Fecha</label>
+        <input required type="date" id="date" name="date" formControlName="date">
+        <div class="alert" *ngIf="pqrsForm.get('date')?.invalid && (pqrsForm.get('date')?.dirty || pqrsForm.get('date')?.touched)">Se requiere fecha</div>
+      </div>
+      <div class="Name">
+        <label for="description">Descripción</label>
+        <textarea required name="description" rows="10" id="description" placeholder="Aquí pones la descripción..." formControlName="description"></textarea>
+        <div class="alert" *ngIf="pqrsForm.get('description')?.invalid && (pqrsForm.get('description')?.dirty || pqrsForm.get('description')?.touched)">Se requiere una descripción</div>
+      </div>
+      <div class="botones">
+        <button class="botonBonitoSend" id="submitButton" [disabled]="!pqrsForm.valid">Enviar</button>
+      </div>
+    </form>
+  </div>
+</div>
+<app-footer></app-footer>
