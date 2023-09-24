@@ -18,7 +18,7 @@ exports.uploadImages = (imageName, imageStream, imageType) => {
 	try {
 		minioClient.putObject(
 			bucketName,
-			imageName+"."+imageType,
+			imageName + "." + imageType,
 			imageStream,
 			"image/*",
 			function (e) {
@@ -32,9 +32,24 @@ exports.uploadImages = (imageName, imageStream, imageType) => {
 	}
 };
 
-exports.getImage = (bucketName, imageName) => {
-	const res = minioClient.getObject(bucketName, imageName);
-	res.on("data", (chunck) => console.log(chunck));
-	res.on("end", () => console.log("reading file object finished"));
-	return res;
+exports.getImage = async (bucketName, imageName) => {
+	const imageStream = new Promise((resolve, reject) => {
+		let imageBufferArray = [];
+		minioClient
+			.getObject(bucketName, imageName)
+			.then((imageStream) => {
+				imageStream.on("error", (err) => {
+					console.log(err);
+					reject(err);
+				});
+				imageStream.on("data", (arrayBuffer) => {
+					imageBufferArray.push(arrayBuffer);
+				});
+				imageStream.on("end", () => {
+					resolve(imageBufferArray);
+				});
+			})
+			.catch(reject);
+	});
+	return Buffer.concat(await imageStream);
 };
