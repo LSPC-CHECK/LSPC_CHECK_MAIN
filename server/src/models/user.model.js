@@ -47,13 +47,14 @@ module.exports = (sequelize, Sequelize) => {
 			field: "state",
 			type: Sequelize.TEXT,
 		},
-		type: {
-			field: "type",
+		imageType: {
+			field: "imageType",
 			type: Sequelize.TEXT,
 		},
 		imageName: {
 			field: "imageName",
 			type: Sequelize.TEXT,
+			unique: true,
 		},
 		resetPasswordToken: {
 			field: "reset_password_token",
