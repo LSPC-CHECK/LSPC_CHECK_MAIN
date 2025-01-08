@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, Router} from '@angular/router';
+import { ActivatedRouteSnapshot, Router } from '@angular/router';
 import { ProfileService } from '../services/profile/profile.service';
 import { UserService } from '../services/user/user.service';
 import { DataHistoryComponent } from '../components/data-history/data-history.component';
@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthRoleGuard implements CanActivate {
+export class AuthRoleGuard  {
 
 
   constructor(private router:Router, private _profileService: ProfileService, private _userService: UserService) {}

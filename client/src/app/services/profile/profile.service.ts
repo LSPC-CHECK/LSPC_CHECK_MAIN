@@ -2,13 +2,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Profile } from 'src/app/models/Profile';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProfileService {
 
-  url = 'http://localhost:4000/api/profile/';
   token = localStorage.getItem('token');
   // headers donde enviamos el token para ser autorizados
   httpOptions = {
@@ -22,23 +22,23 @@ export class ProfileService {
 
   // Listar todos los registros
   getProfiles(): Observable<any>{
-    return this.http.get(this.url, this.httpOptions);
+    return this.http.get(`${environment.BASE_URL}/profile/`, this.httpOptions);
   }
   // Eliminar registro por ID
   deleteProfile(idProfile: string): Observable<any>{
-    return this.http.delete(this.url + idProfile, this.httpOptions);
+    return this.http.delete(`${environment.BASE_URL}/profile/` + idProfile, this.httpOptions);
   }
   // Crear Registro
   addProfile(profile: Profile): Observable<any>{
-    return this.http.post(this.url, profile, this.httpOptions);
+    return this.http.post(`${environment.BASE_URL}/profile/`, profile, this.httpOptions);
   }
   // Listar registro por ID
   getProfile(idProfile: string): Observable<any>{
-    return this.http.get(this.url + idProfile, this.httpOptions);
+    return this.http.get(`${environment.BASE_URL}/profile/` + idProfile, this.httpOptions);
   }
   // Editar registro por ID
   updateProfile(idProfile: string, profile: Profile): Observable<any>{
-    return this.http.put(this.url + idProfile, profile, this.httpOptions);
+    return this.http.put(`${environment.BASE_URL}/profile/` + idProfile, profile, this.httpOptions);
   }
 
   getRoles(){

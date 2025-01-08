@@ -2,13 +2,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { EntSal } from 'src/app/models/EntSal';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EntsalService {
 
-  url = 'http://localhost:4000/api/entSal/';
   token = localStorage.getItem('token');
   // headers donde enviamos el token para ser autorizados
   httpOptions = {
@@ -22,11 +22,11 @@ export class EntsalService {
   constructor(private http: HttpClient) { }
   //registrar una entrada o salida
   postEntSal(data:EntSal):Observable<any>{
-    return this.http.post(this.url, data, this.httpOptions);
+    return this.http.post(`${environment.BASE_URL}/entSal/`, data, this.httpOptions);
   }
   // Listar todos los registros
   getsEntSal():Observable<any>{
-    return this.http.get(this.url, this.httpOptions);
+    return this.http.get(`${environment.BASE_URL}/entSal/`, this.httpOptions);
   }
 
 }

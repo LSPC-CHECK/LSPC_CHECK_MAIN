@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from 'src/app/models/User';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +11,6 @@ import { Observable } from 'rxjs';
 export class UserService {
 
   token = localStorage.getItem('token');
-
-  url = 'http://localhost:4000/api/user/';
 
   // headers donde enviamos el token para ser autorizados
   httpOptions = {
@@ -32,36 +31,36 @@ export class UserService {
 
   // Crear Registro
   addUser(user: User): Observable<any>{
-    return this.http.post(this.url, user, this.httpOptions);
+    return this.http.post(`${environment.BASE_URL}/user/`, user, this.httpOptions);
   }
   // Listar todos los registros
   getUsers(): Observable<any>{
-    return this.http.get(this.url, this.httpOptions);
+    return this.http.get(`${environment.BASE_URL}/user/`, this.httpOptions);
   }
   // Listar registro por ID
   getUser(idUser: string): Observable<any>{
-    return this.http.get(this.url + idUser, this.httpOptions);
+    return this.http.get(`${environment.BASE_URL}/user/` + idUser, this.httpOptions);
   }
   //obetener imagen
   getImageUser(idUser:string): Observable<Blob>{
-    return this.http.get(this.url + idUser + '/getimage',{responseType:'blob'});
+    return this.http.get(`${environment.BASE_URL}/user/` + idUser + '/getimage',{responseType:'blob'});
   }
   // Editar registro por ID
   updateUser(idUser: string, user: User): Observable<any>{
-    return this.http.put(this.url + idUser, user, this.httpOptions);
+    return this.http.put(`${environment.BASE_URL}/user/` + idUser, user, this.httpOptions);
   }
   //actualizar la imagen del usuario
   updateImageUser(idUser:string, imgData:any):Observable<any>{
-    return this.http.put(this.url + idUser + '/image', imgData);
+    return this.http.put(`${environment.BASE_URL}/user/` + idUser + '/image', imgData);
   }
 
   // Eliminar registro por ID
   deleteUser(idUser: string): Observable<any>{
-    return this.http.delete(this.url + idUser, this.httpOptions);
+    return this.http.delete(`${environment.BASE_URL}/user/` + idUser, this.httpOptions);
   }
   // login
   login(user: any): Observable<any>{
-    return this.http.post(this.url + 'login', user);
+    return this.http.post(`${environment.BASE_URL}/user/login`, user);
   }
   // Validaciones de que el token sea valido
   isAuth():boolean{

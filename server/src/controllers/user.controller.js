@@ -6,11 +6,51 @@ const Computer = db.computer;
 const Op = db.SequelizeLbr.Op;
 const bcrypt = require("bcryptjs");
 const { Sequelize } = require('sequelize');
+const fs = require('fs');
+const path = require('path');
 require('dotenv').config({ path: './variables.env' });
 //relaciones de tablas
 
 User.belongsTo(Profile,{foreignKey: "idProfile"});// N - N
 Profile.hasMany(User,{foreignKey: "idProfile"});// M - N
+
+const saveImages = async (imageName, imageType, imageStream) => {
+    try {
+        await fs.promises.writeFile(path.join(__dirname, `../files/${imageName}.${imageType}`), Buffer.from(imageStream, 'base64'));
+    } catch (error) {
+        console.error('Error saving image:', error);
+        throw error; // Propagate the error
+    }
+};
+
+// Retrieve images
+exports.getImages = async (req, res) => {
+    try {
+        const imageName = req.params.imageName;
+        // Validate that imageName is provided
+        if (!imageName) {
+            return res.status(400).send({ message: 'Invalid parameter: image name is required.' });
+        }
+        // Find panel with the specified image name
+        const user = await User.findOne({ where: { imageName: imageName } });
+        if (!user) {
+            return res.status(404).send({ message: 'User not found for the provided image name.' });
+        }
+        const imageType = user.imageType;
+        const imagePath = path.join(__dirname, `../files/${imageName}.${imageType}`);
+        // Check if the image file exists and read its content
+        if (!fs.existsSync(imagePath)) {
+            return res.status(404).send({ message: 'Image file not found.' });
+        }
+        const imageBuffer = fs.readFileSync(imagePath);
+        // Set the content-type and send the image buffer
+        res.set('Content-Type', `image/${imageType}`);
+        res.status(200).send(imageBuffer);
+    } catch (error) {
+        console.error('Error retrieving image:', error);
+        res.status(500).send({ message: `An error occurred while retrieving the image: ${error.message}` });
+    }
+};
 
 //crear y guardar
 exports.create = async (req,res)=>{
@@ -31,7 +71,7 @@ exports.create = async (req,res)=>{
         email:req.body.email,
         cardId:req.body.cardId,
         idProfile:req.body.idProfile,
-        state:req.body.state,
+        state:req.body.state
     }
 
     //guardar un registro en la base de datos
@@ -104,13 +144,17 @@ exports.update = async (req, res) => {
     const id = req.params.id;
     const saltRounds = 10;
     const password = req.body.password;
+    const { imageName, imageStream, imageType } = req.body;
 
     try {
         if (password) {
             const hash = await bcrypt.hash(password, saltRounds);
             req.body.password = hash;
         }
-
+        // If new image data is provided, save it
+        if (imageStream && imageType) {
+            await saveImages(imageName, imageType, imageStream);
+        }
         const num = await User.update(req.body, {where: { idUser: id }});
 
         if (num == 1) {

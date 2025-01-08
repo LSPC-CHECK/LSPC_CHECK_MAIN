@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Pqrs } from 'src/app/models/Pqrs';
 import { UserService } from '../user/user.service';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +11,6 @@ import { UserService } from '../user/user.service';
 export class PqrsService {
 
   token = localStorage.getItem('token');
-
-  url = 'http://localhost:4000/api/pqrs/';
 
   // headers donde enviamos el token para ser autorizados
   httpOptions = {
@@ -27,22 +26,22 @@ export class PqrsService {
 
   // Listar todos los registros
   getPqrs(): Observable<any>{
-    return this.http.get(this.url, this.httpOptions);
+    return this.http.get(`${environment.BASE_URL}/pqrs/`, this.httpOptions);
   }
   // Listar todos los registros por usuario
   getPqrsByUser(): Observable<any>{
-    return this.http.get(this.url + "/userPqrs/" + this.tkDecode.idUser, this.httpOptions);
+    return this.http.get(`${environment.BASE_URL}/pqrs/userPqrs/` + this.tkDecode.idUser, this.httpOptions);
   }
   // Crear Registro
   addPqrs(pqrs: Pqrs): Observable<any>{
-    return this.http.post(this.url, pqrs, this.httpOptions);
+    return this.http.post(`${environment.BASE_URL}/pqrs/`, pqrs, this.httpOptions);
   }
   // Listar registro por ID
   getsPqrs(idInform: string): Observable<any>{
-    return this.http.get(this.url + idInform, this.httpOptions);
+    return this.http.get(`${environment.BASE_URL}/pqrs/` + idInform, this.httpOptions);
   }
   // Editar registro por ID
   updatePqrs(idInform: string, pqrs: Pqrs): Observable<any>{
-    return this.http.put(this.url + idInform, pqrs, this.httpOptions);
+    return this.http.put(`${environment.BASE_URL}/pqrs/` + idInform, pqrs, this.httpOptions);
   }
 }

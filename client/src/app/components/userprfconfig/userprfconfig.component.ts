@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { UserService } from 'src/app/services/user/user.service';
 import * as bcrypt from 'bcryptjs';
 import { SafeUrl } from '@angular/platform-browser';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-userprfconfig',
@@ -17,7 +18,7 @@ export class UserprfconfigComponent implements OnInit {
   userPForm: FormGroup;
   passForm: FormGroup;
   IdUser = this.activateRoute.snapshot.params['id'];
-  url = `https://lspc-check.github.io/LSPC-CHECK/qrcheck/${this.IdUser}`;
+  url = `${environment.BASE_URL_FRONTEND}/qrcheck/${this.IdUser}`;
   URL:SafeUrl = "";
   image ='';
   imgURL = 'https://i.ibb.co/fvd9MXW/logo-LSPC2.png';

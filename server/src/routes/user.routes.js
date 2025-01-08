@@ -13,6 +13,8 @@ module.exports = app =>{
     router.get("/count",auth.verifyToken,user.countUsers);
     //encuentra un registro a base de su id
     router.get("/:id",auth.verifyToken, user.findOne);
+    // Get an image of a panel (No authentication required)
+    router.get('/view/image/:imageName', auth.verifyToken, user.getImages);
     //actualiza un registro a base de su id
     router.put("/:id",auth.verifyToken, user.update);
     //elimina un registro a base de su id
